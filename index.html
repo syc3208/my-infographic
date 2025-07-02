@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인포그래픽: 거룩함을 위한 싸움</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #F0F8FF;
+        }
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .flowchart-step {
+            position: relative;
+            background-color: #B6E9FF;
+            color: #004AAD;
+            border: 2px solid #0094FF;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+            flex-grow: 1;
+        }
+        .flowchart-arrow {
+            font-size: 2.5rem;
+            color: #0094FF;
+            line-height: 1;
+            align-self: center;
+        }
+    </style>
+</head>
+<body class="text-[#004AAD]">
+    <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-6xl font-black text-[#004AAD] mb-4">거룩함을 위한 싸움</h1>
+            <p class="text-xl md:text-2xl text-[#0094FF] font-light">"선을 행하기 원하는 나에게 악이 함께 있는 것이로다" (롬 7:21)</p>
+        </header>
+
+        <main class="space-y-16">
+
+            <section id="conflict" class="card text-center">
+                <h2 class="text-3xl font-bold text-[#004AAD] mb-4">내면의 전쟁터</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8">성령께서 주시는 거룩함에 대한 열망과 우리 안에 깊이 뿌리내린 죄의 습관은 매일 우리 안에서 충돌합니다.</p>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 w-full max-w-2xl mx-auto">
+                    <div class="bg-[#B6E9FF] p-6 rounded-lg flex-1 text-center">
+                        <h3 class="text-2xl font-bold text-[#004AAD]">거룩함에 대한 열망</h3>
+                        <p class="text-md text-[#004AAD]">성령께서 주시는 새로운 본성</p>
+                    </div>
+                    <p class="text-5xl md:text-6xl font-black text-[#0094FF] flex-shrink-0">V S</p>
+                    <div class="bg-gray-200 p-6 rounded-lg flex-1 text-center">
+                        <h3 class="text-2xl font-bold text-gray-700">죄의 습관</h3>
+                        <p class="text-md text-gray-600">타락한 옛 본성</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="enemy" class="card">
+                <h2 class="text-3xl font-bold text-center mb-2 text-[#004AAD]">적을 알라: 우리 마음 속의 죄</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto text-center mb-8">승리의 첫걸음은 적을 아는 것입니다. 성경은 죄가 바로 우리의 '마음'에 거주하며, 그 마음은 만물보다 거짓되고 부패했다고 경고합니다 (렘 17:9).</p>
+                <div class="chart-container">
+                    <canvas id="heartChart"></canvas>
+                </div>
+                <p class="text-center text-gray-500 mt-4">우리는 자신의 마음조차 온전히 알지 못합니다. 하나님만이 우리의 중심을 아십니다.</p>
+            </section>
+            
+            <section id="tactics" class="card">
+                <h2 class="text-3xl font-bold text-center mb-8 text-[#004AAD]">죄의 공격 전술</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto text-center mb-12">죄는 우리의 욕망을 통해 나타나고, 우리의 지성과 이성을 속여 불순종으로 이끌려 합니다. 그 과정은 교묘하고 점진적입니다.</p>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-lg">
+                    <div class="flowchart-step">
+                        <span class="text-4xl">①</span><br>방심하게 만듦
+                    </div>
+                    <div class="flowchart-arrow">→</div>
+                    <div class="flowchart-step">
+                        <span class="text-4xl">②</span><br>자신을 과신하게 함
+                    </div>
+                    <div class="flowchart-arrow">→</div>
+                    <div class="flowchart-step bg-[#0094FF] text-white border-[#004AAD]">
+                        <span class="text-4xl">③</span><br>불순종에 빠뜨림
+                    </div>
+                </div>
+                <div class="mt-8 text-center bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded-md">
+                    <p class="font-bold">"그런즉 선 줄로 생각하는 자는 넘어질까 조심하라" (고전 10:12)</p>
+                </div>
+            </section>
+
+            <section id="strategy" class="card">
+                <h2 class="text-3xl font-bold text-center mb-8 text-[#004AAD]">승리를 위한 영적 전략</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-2xl font-bold text-[#0094FF] mb-4">1. 성령의 조명하심을 구하는 기도</h3>
+                        <p class="text-lg text-gray-600 mb-6">우리 힘으로는 마음을 살필 수 없습니다. 다윗처럼 성령께서 우리의 마음을 비춰주시길 기도해야 합니다.</p>
+                        <blockquote class="border-l-4 border-[#0094FF] pl-4 py-2 bg-[#F0F8FF] rounded-r-lg">
+                            <p class="text-lg italic text-[#004AAD]">"하나님이여 나를 살피사 내 마음을 아시며 나를 시험하사 내 뜻을 아옵소서 내게 무슨 악한 행위가 있나 보시고 나를 영원한 길로 인도하소서"</p>
+                            <cite class="block text-right mt-2 not-italic font-semibold">- 시편 139:23-24</cite>
+                        </blockquote>
+                        <p class="text-sm text-red-500 mt-4">*주의: 참소자인 사탄의 도구가 될 수 있는 병적인 자기분석에 빠지지 않도록 경계해야 합니다.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-[#0094FF] mb-4">2. 잠언 4장23절</h3>
+                        <p class="text-lg text-gray-600 mb-6">생명의 근원인 마음을 지키는 데 얼마나 집중하고 있습니까?</p>
+                        <div class="chart-container h-64 md:h-80">
+                             <canvas id="focusChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="text-center py-10 border-t-2 border-[#89DDFF]">
+                <h2 class="text-4xl font-black text-[#004AAD] mb-4">결론: 평생의 싸움</h2>
+                <p class="text-xl text-gray-700 max-w-3xl mx-auto mb-6">죄와의 싸움은 끝이 없기에 예수님의 말씀처럼 시험에 들지 않게 깨어 기도해야 합니다.</p>
+                <div class="bg-[#004AAD] text-white p-8 rounded-lg shadow-2xl">
+                    <p class="text-2xl font-bold">"무릇 지킬만한 것보다 더욱 네 마음을 지키라<br>생명의 근원이 이에서 남이니라"</p>
+                    <p class="text-lg mt-2">- 잠언 4:23 -</p>
+                </div>
+            </footer>
+
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const chartJsTooltip = {
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) {
+                            return label.join(' ');
+                        } else {
+                            return label;
+                        }
+                    }
+                }
+            };
+            
+            const processLabels = (labels) => {
+                return labels.map(label => {
+                    if (label.length > 16) {
+                        const words = label.split(' ');
+                        const newLabel = [];
+                        let line = '';
+                        words.forEach(word => {
+                            if ((line + word).length > 16) {
+                                newLabel.push(line.trim());
+                                line = '';
+                            }
+                            line += word + ' ';
+                        });
+                        newLabel.push(line.trim());
+                        return newLabel;
+                    }
+                    return label;
+                });
+            };
+
+            const heartCtx = document.getElementById('heartChart')?.getContext('2d');
+            if (heartCtx) {
+                new Chart(heartCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['우리가 아는 부분', '하나님만 아시는 부분', '우리가 안다고 착각하는 부분'],
+                        datasets: [{
+                            label: '우리 마음의 실체',
+                            data: [10, 60, 30],
+                            backgroundColor: ['#89DDFF', '#004AAD', '#0094FF'],
+                            borderColor: '#FFFFFF',
+                            borderWidth: 4,
+                            hoverOffset: 10
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    color: '#004AAD',
+                                    font: {
+                                        size: 14,
+                                        family: "'Noto Sans KR', sans-serif"
+                                    }
+                                }
+                            },
+                            tooltip: chartJsTooltip
+                        }
+                    }
+                });
+            }
+
+            const focusCtx = document.getElementById('focusChart')?.getContext('2d');
+            if (focusCtx) {
+                new Chart(focusCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: processLabels(['마음 지키기', '세상적인 염려와 걱정', '일상 업무 및 의무', '개인적 여가 및 취미']),
+                        datasets: [{
+                            label: '영적 에너지 분배 (%)',
+                            data: [15, 35, 30, 20],
+                            backgroundColor: ['#0094FF', '#89DDFF', '#B6E9FF', '#CCCCCC'],
+                            borderColor: '#004AAD',
+                            borderWidth: 2,
+                            borderRadius: 5
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                grid: {
+                                    color: '#E0E0E0'
+                                },
+                                ticks: {
+                                    color: '#004AAD'
+                                }
+                            },
+                             y: {
+                                grid: {
+                                    display: false
+                                },
+                                ticks: {
+                                    color: '#004AAD',
+                                    font: {
+                                        size: 12
+                                    }
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: chartJsTooltip
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
